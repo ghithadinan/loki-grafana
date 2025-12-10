@@ -32,10 +32,6 @@ sudo chmod -R 777 loki-data
 
 Pastikan folder `loki-data` dan `wso2-logs` berada **di directory yang sama** dengan `docker-compose.yml`.
 
-> isi mount folder `wso2-logs` merupakan isi dari log aplikasi wso2 atau bisa di mounting dengan menambahkan di docker compose <br/>
- volumes: <br/>
-      - path/loki-grafana/wso2-logs:/home/wso2carbon/wso2am-4.5.0/repository/logs
-
 ---
 
 ## 🐳 2. Menjalankan Docker Compose
@@ -125,4 +121,7 @@ Pastikan path mapping sesuai seperti:
 - ./wso2-logs:/home/wso2carbon/wso2am-4.3.0/repository/logs
 ```
 
----
+isi mount folder `wso2-logs` merupakan isi dari log aplikasi wso2 atau bisa di mounting dengan menambahkan di docker compose <br/>
+```yaml
+volumes: 
+- path/loki-grafana/wso2-logs:/home/wso2carbon/wso2am-4.5.0/repository/logs
