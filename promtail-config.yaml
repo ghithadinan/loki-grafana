@@ -16,7 +16,7 @@ scrape_configs:
         labels:
           job: wso2
           service: wso2-am
-          __path__: /home/wso2carbon/wso2am-4.3.0/repository/logs/*.log
+          __path__: /home/wso2carbon/wso2am-4.5.0/repository/logs/*.log
 
   - job_name: wso2-traffic
     static_configs:
@@ -24,4 +24,4 @@ scrape_configs:
           - localhost
         labels:
           job: wso2-traffic
-          __path__: /home/wso2carbon/wso2am-4.3.0/repository/logs/http_access*.log
+          __path__: /home/wso2carbon/wso2am-4.5.0/repository/logs/http_access*.log

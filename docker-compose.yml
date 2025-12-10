@@ -11,9 +11,8 @@ services:
   promtail:
     image: grafana/promtail:2.9.3
     volumes:
-      - /var/log:/var/log
       - ./promtail-config.yaml:/etc/promtail/config.yaml
-      - ./wso2-logs:/home/wso2carbon/wso2am-4.3.0/repository/logs
+      - ./wso2-logs:/home/wso2carbon/wso2am-4.5.0/repository/logs
     command: -config.file=/etc/promtail/config.yaml
 
   grafana:
@@ -22,3 +21,5 @@ services:
       - "3000:3000"
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - loki
