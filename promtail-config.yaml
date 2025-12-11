@@ -34,3 +34,15 @@ scrape_configs:
           container: splp-gw
           service: wso2-am
           __path__: /home/wso2carbon/wso2am-4.5.0/repository/logs/*.log
+
+    pipeline_stages:
+      - multiline:
+          firstline: '^\d{4}-\d{2}-\d{2} '
+      - regex:
+          expression: '^TID: \[\] \[\] \[(?P<ts>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3})\]\s+(?P<level>[A-Z]+)\s+(?P<msg>.*)$'
+      - template:
+          source: msg
+          template: |
+            {"time":"{{ .ts }}","stream":"{{ .level }}","log":"[{{ .ts }}]  {{ .level }} - {{ .msg }}"}
+      - output:
+          source: msg
