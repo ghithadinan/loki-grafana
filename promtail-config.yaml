@@ -25,3 +25,12 @@ scrape_configs:
         labels:
           job: wso2-traffic
           __path__: /home/wso2carbon/wso2am-4.5.0/repository/logs/http_access*.log
+
+  - job_name: splp-gw
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          container: splp-gw
+          service: wso2-am
+          __path__: /home/wso2carbon/wso2am-4.5.0/repository/logs/*.log
