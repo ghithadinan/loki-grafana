@@ -24,6 +24,10 @@ mkdir -p loki-data/cache
 mkdir wso2-logs
 sudo chmod -R 777 ./wso2-logs
 
+# Buat folder untuk grafana
+mkdir grafana-data
+sudo chmod -R 777 grafana-data
+
 # Berikan permission agar Loki dapat menulis
 sudo chmod -R 777 loki-data
 ```
