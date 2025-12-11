@@ -39,10 +39,10 @@ scrape_configs:
       - multiline:
           firstline: '^\d{4}-\d{2}-\d{2} '
       - regex:
-          expression: '^TID: \[\] \[\] \[(?P<ts>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3})\]\s+(?P<level>[A-Z]+)\s+(?P<msg>.*)$'
+          expression: '^TID: \[\] \[\] \[(?P<ts>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3})\]\s+(?P<level>[A-Z]+)\s+\{org\.wso2\.am\.analytics\.publisher\.sample\.reporter\.LogCounterMetric\} - (?P<msg>.*)$'
       - template:
           source: msg
           template: |
-            {"time":"{{ .ts }}","stream":"{{ .level }}","log":"[{{ .ts }}]  {{ .level }} - {{ .msg }}"}
+            {"log":"[{{ .ts }}] {{ .level }} - LogCounterMetric {{ .msg }}","stream":"stdout","time":"{{ .ts }}"}
       - output:
           source: msg
