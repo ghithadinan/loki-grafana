@@ -46,3 +46,5 @@ scrape_configs:
             {"log":"[{{ .ts }}] {{ .level }} - LogCounterMetric {{ .msg }}","stream":"stdout","time":"{{ .ts }}"}
       - output:
           source: msg
+      - drop:
+          expression: '<no value>'
